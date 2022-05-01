@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PostView">
+        <attr name="postId" format="integer"/>
+        <attr name="postTitle" format="string"/>
+        <attr name="postPhotoUrl" format="string"/>
+        <attr name="postDescription" format="string"/>
+        <attr name="postAuthorId" format="integer"/>
+    </declare-styleable>
+</resources>
