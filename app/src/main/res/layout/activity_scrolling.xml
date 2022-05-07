@@ -1,44 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ScrollingActivity">
+    android:background="@color/primaryBackGround"
+    tools:context=".scrolling.ScrollingActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
+    <RelativeLayout
+        android:id="@+id/loadingLayout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
-        android:fitsSystemWindows="true"
-        android:theme="@style/Theme.ChefHub.AppBarOverlay">
+        android:layout_height="match_parent"
+        android:paddingBottom="20dp">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:toolbarId="@+id/toolbar">
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/cpiPostsLoading"
+            android:indeterminate="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:indicatorSize="80dp"
+            app:indicatorColor="@color/white"
+            android:visibility="visible"
+            android:layout_centerInParent="true"/>
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/Theme.ChefHub.PopupOverlay" />
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cpiPostsLoading"
+            android:text="Loading posts..."
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/textDarkAccent"
+            android:textSize="20dp"
+            android:layout_marginTop="50dp"/>
+    </RelativeLayout>
 
     <ListView
         android:id="@+id/lvPosts"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:footerDividersEnabled="false"
-        android:headerDividersEnabled="false"/>
+        android:layout_gravity="fill"
+        android:paddingBottom="20dp"
+        android:divider="@null"
+        android:visibility="gone"
+        android:overScrollMode="never"
+        android:background="@color/primaryBackGround"
+        android:scrollbars="none"/>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom"
+        style="@style/Widget.MaterialComponents.BottomAppBar.Colored">
+
+        <ImageButton
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/homefilled"
+            android:background="@color/primaryBackGround"
+            android:scaleType="centerInside"
+            android:layout_gravity="start"/>
+
+        <ImageButton
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/search"
+            android:background="@color/primaryBackGround"
+            android:scaleType="centerInside"
+            android:layout_gravity="center"/>
+
+        <ImageButton
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/person"
+            android:background="@color/primaryBackGround"
+            android:layout_gravity="end"
+            android:scaleType="centerInside"
+            android:layout_marginRight="15dp"/>
+
+        
+    </com.google.android.material.bottomappbar.BottomAppBar>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,31 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/primaryBackGround">
 
-    <TextView
-        android:id="@+id/tvPostAuthor"
+    <RelativeLayout
+        android:id="@+id/authorLayout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true" />
+        android:layout_height="40dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivProfilePicture"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="10dp"
+            app:civ_border_color="@color/textDarkAccent"
+            app:civ_border_width="1dp"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:id="@+id/tvPostAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/primaryText"
+            android:background="@color/primaryBackGround"
+            android:textIsSelectable="false"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/ivProfilePicture"/>
+
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/ivPostPhoto"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:maxHeight="250dp"
-        android:layout_below="@+id/tvPostAuthor"/>
+        android:layout_height="300dp"
+        android:layout_below="@+id/authorLayout"
+        android:background="@color/primaryBackGround"
+        android:maxHeight="300dp"/>
+
+    <RelativeLayout
+        android:id="@+id/rlInteractionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/ivPostPhoto">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@color/primaryBackGround"
+            android:src="@drawable/favorite" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tvPostTitle"
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:layout_below="@id/ivPostPhoto" />
+        android:layout_below="@id/rlInteractionLayout"
+        android:textColor="@color/primaryText"
+        android:layout_marginLeft="15dp"
+        android:textStyle="bold"
+        android:background="@color/primaryBackGround"/>
 
     <TextView
         android:id="@+id/tvPostDescription"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@id/tvPostTitle" />
+        android:layout_below="@id/tvPostTitle"
+        android:layout_marginBottom="50dp"
+        android:textColor="@color/primaryText"
+        android:layout_marginLeft="15dp"
+        android:background="@color/primaryBackGround"/>
 
 </RelativeLayout>
