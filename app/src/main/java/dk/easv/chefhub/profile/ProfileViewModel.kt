@@ -1,4 +1,4 @@
-package dk.easv.chefhub.ui.profile
+package dk.easv.chefhub.profile
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

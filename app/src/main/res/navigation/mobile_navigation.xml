@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="dk.easv.chefhub.ui.home.HomeFragment"
+        android:name="dk.easv.chefhub.home.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="dk.easv.chefhub.ui.search.SearchFragment"
+        android:name="dk.easv.chefhub.search.SearchFragment"
         android:label="Search"
         tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="dk.easv.chefhub.ui.profile.ProfileFragment"
+        android:name="dk.easv.chefhub.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

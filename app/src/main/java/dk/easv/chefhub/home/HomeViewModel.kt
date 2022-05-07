@@ -1,13 +1,13 @@
-package dk.easv.chefhub.ui.search
+package dk.easv.chefhub.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SearchViewModel : ViewModel() {
+class HomeViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+        value = "This is home Fragment"
     }
     val text: LiveData<String> = _text
 }

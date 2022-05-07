@@ -1,16 +1,15 @@
-package dk.easv.chefhub.ui.search
+package dk.easv.chefhub.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import dk.easv.chefhub.databinding.FragmentSearchBinding
+import dk.easv.chefhub.databinding.FragmentProfileBinding
 
-class SearchFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
-    private var _binding: FragmentSearchBinding? = null
+    private var _binding: FragmentProfileBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -21,10 +20,10 @@ class SearchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        val searchViewModel =
-//            ViewModelProvider(this).get(SearchViewModel::class.java)
+//        val profileViewModel =
+//            ViewModelProvider(this).get(ProfileViewModel::class.java)
 
-        _binding = FragmentSearchBinding.inflate(inflater, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
         return binding.root
     }
