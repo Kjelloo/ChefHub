@@ -55,6 +55,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
             android:background="@color/primaryBackGround"
+            app:tint="@color/white"
             android:src="@drawable/favorite" />
 
     </RelativeLayout>

@@ -16,8 +16,8 @@ import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
 import com.google.gson.Gson
+import dk.easv.chefhub.MainActivity
 import dk.easv.chefhub.R
-import dk.easv.chefhub.scrolling.ScrollingActivity
 import dk.easv.chefhub.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -69,11 +69,12 @@ class LoginActivity : AppCompatActivity() {
 
             // On login successful
             if (loginResult.success != null) {
+                // Put user into local storage
                 editor.putString("user", gson.toJson(loginResult.success))
                 editor.commit()
 
                 finish()
-                val intent = Intent(this, ScrollingActivity::class.java).apply {  }
+                val intent = Intent(this, MainActivity::class.java).apply {  }
                 startActivity(intent)
             }
             setResult(Activity.RESULT_OK)
