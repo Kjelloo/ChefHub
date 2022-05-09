@@ -16,7 +16,6 @@ import kotlin.Result
  */
 
 class LoginRepository() {
-    private val baseURL = Properties.BACKEND_URL
     private val httpClient: AsyncHttpClient = AsyncHttpClient()
     private val httpHelper: HttpHelper = HttpHelper()
 
@@ -43,7 +42,7 @@ class LoginRepository() {
         params.put("username", username)
         params.put("password", password)
 
-        httpClient.post("$baseURL/auth/login", params, object : AsyncHttpResponseHandler() {
+        httpClient.post("${Properties.BACKEND_URL}/auth/login", params, object : AsyncHttpResponseHandler() {
             override fun onSuccess(
                 statusCode: Int,
                 headers: Array<out Header>?,

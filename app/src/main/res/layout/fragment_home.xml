@@ -34,16 +34,16 @@
             android:textSize="20dp"/>
     </RelativeLayout>
 
-<!--    Post feed -->
-    <ListView
-        android:id="@+id/lvPosts"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPosts"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="fill"
         android:divider="@null"
         android:visibility="gone"
         android:overScrollMode="never"
         android:background="@color/primaryBackGround"
-        android:scrollbars="none"/>
+        android:scrollbars="none"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -9,7 +9,6 @@ import dk.easv.chefhub.data.ICallbackPosts
 import dk.easv.chefhub.data.Properties
 
 class PostRepository {
-    private val baseURl = Properties.BACKEND_URL
     private val httpClient: AsyncHttpClient = AsyncHttpClient()
     private val httpHelper: HttpHelper = HttpHelper()
 
@@ -18,7 +17,29 @@ class PostRepository {
     }
 
     fun getPostFeed(callback: ICallbackPosts) {
-        httpClient.get("$baseURl/posts/feed", object : AsyncHttpResponseHandler() {
+        httpClient.get("${Properties.BACKEND_URL}/posts/feed", object : AsyncHttpResponseHandler() {
+            override fun onSuccess(
+                statusCode: Int,
+                headers: Array<out Header>?,
+                responseBody: ByteArray?
+            ) {
+                val posts = httpHelper.getPostsFromResponse(String(responseBody!!))
+                return callback.onPostsReady(posts)
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<out Header>?,
+                responseBody: ByteArray?,
+                error: Throwable?
+            ) {
+                Log.d("ERRORS", "Error fetching posts: ${error?.message}")
+            }
+        })
+    }
+
+    fun getUserPosts(callback: ICallbackPosts) {
+        httpClient.get("${Properties.BACKEND_URL}/posts", object : AsyncHttpResponseHandler() {
             override fun onSuccess(
                 statusCode: Int,
                 headers: Array<out Header>?,
