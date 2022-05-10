@@ -1,6 +1,7 @@
 package dk.easv.chefhub.profile
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -14,10 +15,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.gson.Gson
+import dk.easv.chefhub.PostDetailActivity
 import dk.easv.chefhub.R
 import dk.easv.chefhub.data.ICallbackPosts
 import dk.easv.chefhub.data.repositories.PostRepository
 import dk.easv.chefhub.databinding.FragmentProfileBinding
+import dk.easv.chefhub.home.POST_ID
 import dk.easv.chefhub.models.BePost
 import dk.easv.chefhub.models.BeUser
 import dk.easv.chefhub.models.LoggedInUser
@@ -116,9 +119,9 @@ class ProfileFragment : Fragment() {
 
     // When a post is clicked
     private fun adapterOnClick(post: BePost) {
-        //val intent = Intent(this, FlowerDetailActivity()::class.java)
-        //intent.putExtra(FLOWER_ID, flower.id)
-        //startActivity(intent)
+        val intent = Intent(requireContext(), PostDetailActivity()::class.java)
+        intent.putExtra(POST_ID, post.id)
+        startActivity(intent)
     }
 
     override fun onDestroyView() {

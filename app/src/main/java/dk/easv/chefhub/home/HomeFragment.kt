@@ -1,6 +1,7 @@
 package dk.easv.chefhub.home
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -11,12 +12,15 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
+import dk.easv.chefhub.PostDetailActivity
 import dk.easv.chefhub.R
 import dk.easv.chefhub.data.ICallbackPosts
 import dk.easv.chefhub.data.repositories.PostRepository
 import dk.easv.chefhub.databinding.FragmentHomeBinding
 import dk.easv.chefhub.models.BePost
 import dk.easv.chefhub.models.LoggedInUser
+
+const val POST_ID = "post id"
 
 class HomeFragment : Fragment() {
 
@@ -79,9 +83,9 @@ class HomeFragment : Fragment() {
 
     // When a post is clicked
     private fun adapterOnClick(post: BePost) {
-        //val intent = Intent(this, FlowerDetailActivity()::class.java)
-        //intent.putExtra(FLOWER_ID, flower.id)
-        //startActivity(intent)
+        val intent = Intent(requireContext(), PostDetailActivity()::class.java)
+        intent.putExtra(POST_ID, post.id)
+        startActivity(intent)
     }
 
     private fun setLoggedInUser() {

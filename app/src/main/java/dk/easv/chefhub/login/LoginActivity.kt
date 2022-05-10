@@ -31,11 +31,13 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        supportActionBar?.hide()
+
         sharedPrefs = getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
         editor = sharedPrefs.edit()
 
-     binding = ActivityLoginBinding.inflate(layoutInflater)
-     setContentView(binding.root)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val username = binding.username
         val password = binding.password

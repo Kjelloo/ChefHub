@@ -59,4 +59,26 @@ class HttpHelper {
 
         return res
     }
+
+    fun getPostById(response: String?): BePost? {
+        lateinit var res: BePost
+
+        if (response!!.startsWith("error")) {
+            Log.d("ERRORS", "Error: $response")
+        }
+
+        if (response == null) {
+            Log.d("ERRORS", "Error: NO RESULT")
+            return null
+        }
+
+        try {
+            res = BePost(JSONObject(response))
+        } catch (e: JSONException) {
+            e.printStackTrace()
+            return null
+        }
+
+        return res
+    }
 }
