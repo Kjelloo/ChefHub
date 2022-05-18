@@ -1,5 +1,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="dk.easv.chefhub.scrolling.ScrollingActivity">
+    tools:context="dk.easv.chefhub.MainActivity">
+
+    <item
+        android:id="@+id/menuNewPost"
+        android:title="New post"
+        android:icon="@drawable/new_post"
+        app:showAsAction="ifRoom|withText"/>
 </menu>

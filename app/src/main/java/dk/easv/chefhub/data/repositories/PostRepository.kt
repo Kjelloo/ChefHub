@@ -78,7 +78,7 @@ class PostRepository {
                 responseBody: ByteArray?,
                 error: Throwable?
             ) {
-                Log.d("ERRORS", "Error fetching posts: ${error?.message}")
+                Log.d("ERRORS", "Error fetching post: ${error?.message}")
             }
         })
     }

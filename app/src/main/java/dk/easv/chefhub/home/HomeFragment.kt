@@ -8,9 +8,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.RelativeLayout
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import dk.easv.chefhub.PostDetailActivity
 import dk.easv.chefhub.R
@@ -19,6 +20,7 @@ import dk.easv.chefhub.data.repositories.PostRepository
 import dk.easv.chefhub.databinding.FragmentHomeBinding
 import dk.easv.chefhub.models.BePost
 import dk.easv.chefhub.models.LoggedInUser
+
 
 const val POST_ID = "post id"
 
@@ -74,11 +76,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun loadFeed() {
-        val lvPosts = this.requireActivity().findViewById<RecyclerView>(R.id.rvPosts)
+        val rvPosts = _binding?.rvPosts
 
         // Set list view visibility when loading is done
-        lvPosts.visibility = View.VISIBLE
-        lvPosts.adapter = postFeedAdapter
+        rvPosts?.visibility = View.VISIBLE
+        rvPosts?.adapter = postFeedAdapter
     }
 
     // When a post is clicked
@@ -96,6 +98,16 @@ class HomeFragment : Fragment() {
         user = gson.fromJson(sharedPrefs.getString("user", ""), LoggedInUser::class.java)
 
         postsRepo = PostRepository(user.token)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
     }
 
     override fun onDestroyView() {
