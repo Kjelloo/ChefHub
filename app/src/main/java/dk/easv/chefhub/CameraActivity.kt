@@ -5,18 +5,18 @@ import android.content.ContentValues
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import dk.easv.chefhub.databinding.ActivityCameraBinding
 import java.text.SimpleDateFormat
 import java.util.*
@@ -119,11 +119,10 @@ class CameraActivity : AppCompatActivity() {
                 }
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults){
-//                    val intent = Intent(baseContext, CreatePostActivity()::class.java)
-//                    intent.putExtra(IMAGE_TAG, output.savedUri)
-                    val msg = "Photo capture succeeded: ${output.savedUri}"
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-                    Log.d(TAG, msg)
+                    val data = Intent()
+                    data.data = output.savedUri
+                    setResult(RESULT_OK, data)
+                    finish()
                 }
             }
         )

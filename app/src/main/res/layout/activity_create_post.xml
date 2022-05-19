@@ -40,6 +40,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/postTitleNew" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        tools:srcCompat="@tools:sample/avatars" />
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
@@ -59,36 +70,36 @@
                 android:id="@+id/ibCamera"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/camera"
-                android:scaleType="center"
                 android:adjustViewBounds="true"
+                android:background="@color/accentBackGround"
                 android:padding="40dp"
-                android:background="@color/accentBackGround"/>
+                android:scaleType="center"
+                android:src="@drawable/camera" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="New"
-                android:textStyle="bold"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="25dp">
+            android:layout_marginLeft="25dp"
+            android:orientation="vertical">
 
             <ImageButton
                 android:id="@+id/ibGallery"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/gallery"
-                android:scaleType="center"
                 android:adjustViewBounds="true"
+                android:background="@color/accentBackGround"
                 android:padding="40dp"
-                android:background="@color/accentBackGround"/>
+                android:scaleType="center"
+                android:src="@drawable/gallery" />
 
             <TextView
                 android:layout_width="wrap_content"
