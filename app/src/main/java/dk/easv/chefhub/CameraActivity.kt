@@ -91,13 +91,13 @@ class CameraActivity : AppCompatActivity() {
         val imageCapture = imageCapture ?: return
 
         // Create time stamped name and MediaStore entry.
-        val name = SimpleDateFormat(FILENAME_FORMAT, Locale.US)
+        val name = SimpleDateFormat(FILENAME_FORMAT, Locale.UK)
             .format(System.currentTimeMillis())
         val contentValues = ContentValues().apply {
             put(MediaStore.MediaColumns.DISPLAY_NAME, name)
             put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
             if(Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
-                put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/CameraX-Image")
+                put(MediaStore.Images.Media.RELATIVE_PATH, "Pictures/ChefHub-Image")
             }
         }
 
@@ -120,13 +120,13 @@ class CameraActivity : AppCompatActivity() {
 
                 override fun onImageSaved(output: ImageCapture.OutputFileResults){
                     val data = Intent()
+                    Log.d("XYZ", output.savedUri.toString())
                     data.data = output.savedUri
                     setResult(RESULT_OK, data)
                     finish()
                 }
             }
         )
-
     }
 
     override fun onRequestPermissionsResult(
@@ -144,7 +144,6 @@ class CameraActivity : AppCompatActivity() {
             }
         }
     }
-
 
     private fun allPermissionsGranted() = REQUIRED_PERMISSIONS.all {
         ContextCompat.checkSelfPermission(

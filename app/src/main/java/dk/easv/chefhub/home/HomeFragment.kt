@@ -48,23 +48,26 @@ class HomeFragment : Fragment() {
 
         setLoggedInUser()
 
-        // Loading indicator layout
-        val loadingPostLayout = view?.findViewById<RelativeLayout>(R.id.loadingLayout)
-
          postFeedAdapter = HomeRecyclerViewAdapter {post -> adapterOnClick(post)}
 
         // Fetch post feed from backend
         try {
             postsRepo.getPostFeed(object: ICallbackPosts {
                 override fun onPostsReady(posts: ArrayList<BePost>) {
+                    Log.d("XYZ", posts.size.toString())
                     if (posts.size > 0) {
                         // Load data into adapter
                         postFeedAdapter.submitList(posts)
                         loadFeed()
 
                         // Hide the loading indicator
-                        loadingPostLayout?.visibility  = View.GONE
+                        binding.loadingLayout?.visibility  = View.GONE
                     }
+                }
+
+                override fun onError(error: String) {
+                    binding.cpiPostsLoading.visibility = View.GONE
+                    binding.tvLoadingPosts.text = "Currently no posts can be shown..."
                 }
             })
         } catch (e: Exception) {

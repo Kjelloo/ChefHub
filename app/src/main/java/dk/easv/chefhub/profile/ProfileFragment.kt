@@ -73,7 +73,10 @@ class ProfileFragment : Fragment() {
 
                         recyclerView.adapter = myPostsAdapter
                     }
-                    // TODO: Show some text when you have no uploaded posts
+                }
+
+                override fun onError(error: String) {
+                    Log.d("ERROR", "No posts to show...")
                 }
             })
         } catch (e: Exception) {
