@@ -38,7 +38,7 @@ class HttpHelper {
         return res
     }
 
-    fun getLoggedInUserFromResponse(response: String?): LoggedInUser? {
+    fun getLoggedInUserFromResponse(response: String?, username: String): LoggedInUser? {
         lateinit var res: LoggedInUser
 
         if (response!!.startsWith("error")) {
@@ -52,6 +52,7 @@ class HttpHelper {
 
         try {
             res = LoggedInUser(JSONObject(response))
+            res.username = username
         } catch (e: JSONException) {
             e.printStackTrace()
             return null

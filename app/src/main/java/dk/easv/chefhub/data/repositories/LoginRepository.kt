@@ -48,7 +48,7 @@ class LoginRepository() {
                 headers: Array<out Header>?,
                 responseBody: ByteArray?
             ) {
-                return callback.onLoginReady(httpHelper.getLoggedInUserFromResponse(String(responseBody!!))!!)
+                return callback.onLoginReady(httpHelper.getLoggedInUserFromResponse(String(responseBody!!), username)!!)
             }
 
             override fun onFailure(
