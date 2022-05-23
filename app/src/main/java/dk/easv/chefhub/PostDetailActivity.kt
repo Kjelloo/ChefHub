@@ -2,19 +2,13 @@ package dk.easv.chefhub
 
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toolbar
+import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import dk.easv.chefhub.data.ICallbackPost
-import dk.easv.chefhub.data.ICallbackPosts
 import dk.easv.chefhub.data.repositories.PostRepository
 import dk.easv.chefhub.home.POST_ID
 import dk.easv.chefhub.models.BePost
