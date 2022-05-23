@@ -70,7 +70,7 @@ class PostRepository {
     }
 
     fun getPostById(postId: Int, callback: ICallbackPost) {
-        httpClient.get("${Properties.BACKEND_URL}/posts/$postId", object : AsyncHttpResponseHandler() {
+        httpClient.get("${Properties.BACKEND_URL}/posts/get/$postId", object : AsyncHttpResponseHandler() {
             override fun onSuccess(
                 statusCode: Int,
                 headers: Array<out Header>?,
@@ -93,14 +93,14 @@ class PostRepository {
     fun createPost(createPostDto: CreatePostDto, postImage: File, username: String) {
         var params = RequestParams()
 
-        params.put("createDto", createPostDto)
+        params.put("title", createPostDto.title)
+        params.put("desc", createPostDto.desc)
         try {
             params.put("file", postImage, "image/jpeg")
         } catch (e: FileNotFoundException) {
             Log.d("ERRORS", e.stackTraceToString())
             return
         }
-        params.put("req", username)
 
         httpClient.post("${Properties.BACKEND_URL}/posts/upload", params, object : AsyncHttpResponseHandler() {
             override fun onSuccess(

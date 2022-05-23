@@ -4,8 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.database.Cursor
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
@@ -14,19 +14,14 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.net.toFile
+import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import dk.easv.chefhub.data.entities.CreatePostDto
 import dk.easv.chefhub.data.repositories.PostRepository
 import dk.easv.chefhub.databinding.ActivityCreatePostBinding
 import dk.easv.chefhub.models.LoggedInUser
-import okio.Utf8
 import java.io.File
-import java.io.FileInputStream
-import java.io.InputStream
-import java.net.URI
-import java.nio.charset.Charset
 
 class CreatePostActivity : AppCompatActivity() {
     private var imageUri: Uri = Uri.EMPTY
@@ -73,11 +68,21 @@ class CreatePostActivity : AppCompatActivity() {
         val title = binding.postTitleNew.text.toString()
         val desc = binding.postDescriptionNew.text.toString()
 
-        // very hacky way to get the images, will not work on a non emulated version of the app.
-        val path = "/storage/emulated/0/Pictures/ChefHub-Image/" + getContentFileName(imageUri)
+        val cursor: Cursor? = this.contentResolver.query(
+            imageUri,
+            arrayOf(MediaStore.Images.ImageColumns.DATA),
+            null,
+            null,
+            null
+        )
+        cursor?.moveToFirst()
+        val path = cursor?.getString(0)
+        cursor?.close()
+
         val file = File(path)
 
         Log.d("ERRORS", user.username)
+        Log.d("ERRORS", path.toString())
         Log.d("ERRORS", file.exists().toString())
 
         val postDto = CreatePostDto(title, desc)
@@ -97,9 +102,6 @@ class CreatePostActivity : AppCompatActivity() {
         // This way, we don't need to request external read/write runtime permissions.
         val mediaStorageDir =
             File(Environment.DIRECTORY_PICTURES, "ChefHub-Image")
-
-
-
 
         // Return the file target for the photo based on filename
         return File(mediaStorageDir.path + File.separator + fileName)
