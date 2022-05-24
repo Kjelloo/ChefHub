@@ -3,19 +3,18 @@ package dk.easv.chefhub.data.repositories
 import android.util.Log
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
-import com.loopj.android.http.RequestHandle
 import com.loopj.android.http.RequestParams
 import cz.msebera.android.httpclient.Header
 import dk.easv.chefhub.data.*
+import dk.easv.chefhub.data.callbacks.ICallbackLogin
 import dk.easv.chefhub.models.LoggedInUser
-import kotlin.Result
 
 /**
  * Class that requests authentication and user information from the remote data source and
  * maintains an in-memory cache of login status and user credentials information.
  */
 
-class LoginRepository() {
+class LoginRepository {
     private val httpClient: AsyncHttpClient = AsyncHttpClient()
     private val httpHelper: HttpHelper = HttpHelper()
 

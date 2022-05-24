@@ -9,22 +9,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.gson.Gson
-import com.squareup.picasso.Picasso
-import dk.easv.chefhub.PostDetailActivity
+import dk.easv.chefhub.postdetail.PostDetailActivity
+
 import dk.easv.chefhub.R
-import dk.easv.chefhub.data.ICallbackPosts
+import dk.easv.chefhub.data.callbacks.ICallbackPosts
 import dk.easv.chefhub.data.repositories.PostRepository
 import dk.easv.chefhub.databinding.FragmentProfileBinding
 import dk.easv.chefhub.home.POST_ID
 import dk.easv.chefhub.models.BePost
-import dk.easv.chefhub.models.BeUser
 import dk.easv.chefhub.models.LoggedInUser
 
 class ProfileFragment : Fragment() {
@@ -47,9 +45,6 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-//        val profileViewModel =
-//            ViewModelProvider(this).get(ProfileViewModel::class.java)
-
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
         // Get user from shared preferences (local storage)

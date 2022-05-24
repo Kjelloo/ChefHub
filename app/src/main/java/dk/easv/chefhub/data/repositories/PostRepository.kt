@@ -1,26 +1,23 @@
 package dk.easv.chefhub.data.repositories
 
 import android.util.Log
-import com.google.gson.JsonObject
 import com.loopj.android.http.AsyncHttpClient
 import com.loopj.android.http.AsyncHttpResponseHandler
 import com.loopj.android.http.RequestParams
 import cz.msebera.android.httpclient.Header
 import dk.easv.chefhub.data.HttpHelper
-import dk.easv.chefhub.data.ICallbackPost
-import dk.easv.chefhub.data.ICallbackPosts
+import dk.easv.chefhub.data.callbacks.ICallbackPost
+import dk.easv.chefhub.data.callbacks.ICallbackPosts
 import dk.easv.chefhub.data.Properties
 import dk.easv.chefhub.data.entities.CreatePostDto
-import dk.easv.chefhub.models.BeUser
 import java.io.File
 import java.io.FileNotFoundException
-import java.lang.Exception
 
-class PostRepository {
+class PostRepository(token: String) {
     private val httpClient: AsyncHttpClient = AsyncHttpClient()
     private val httpHelper: HttpHelper = HttpHelper()
 
-    constructor(token: String) {
+    init {
         httpClient.addHeader("Authorization", "Bearer $token")
     }
 
@@ -76,7 +73,7 @@ class PostRepository {
                 headers: Array<out Header>?,
                 responseBody: ByteArray?
             ) {
-                return callback.onPostReady(httpHelper.getPostById(String(responseBody!!))!!)
+                return callback.onPostReady(httpHelper.getPostByIdFromResponse(String(responseBody!!))!!)
             }
 
             override fun onFailure(
@@ -90,7 +87,7 @@ class PostRepository {
         })
     }
 
-    fun createPost(createPostDto: CreatePostDto, postImage: File, username: String) {
+    fun createPost(createPostDto: CreatePostDto, postImage: File) {
         var params = RequestParams()
 
         params.put("title", createPostDto.title)

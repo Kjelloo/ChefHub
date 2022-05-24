@@ -29,7 +29,8 @@
             android:name=".CreatePostActivity"
             android:exported="false" />
         <activity
-            android:name=".PostDetailActivity"
+            android:windowSoftInputMode="adjustPan"
+            android:name=".postdetail.PostDetailActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

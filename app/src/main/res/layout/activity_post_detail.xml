@@ -5,41 +5,90 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primaryBackGround"
-    tools:context=".PostDetailActivity">
+    tools:context=".postdetail.PostDetailActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/postDetailToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        app:layout_constraintBottom_toTopOf="@id/authorLayoutDetail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/authorLayoutDetail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/back_arrow">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Post"
-            android:textSize="20dp"
             android:layout_gravity="center_vertical"
-            android:textColor="@color/white"/>
+            android:text="Post"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
+        android:id="@+id/writeCommentLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/accentBackGround"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/commentAuthorPicture"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/person"
+            android:tint="@color/white"
+            app:civ_border_color="@color/primaryBackGround"
+            app:civ_border_width="1dp" />
+
+        <EditText
+            android:id="@+id/commentEditText"
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical"
+            android:hint="Write a comment..."
+            android:maxLength="150"
+            android:inputType="textLongMessage"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:textColorLink="@color/white" />
+
+        <Button
+            android:id="@+id/btnSendComment"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Post"
+            android:layout_gravity="end"
+            android:textColor="@color/teal_700" />
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/authorLayoutDetail"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="40dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/ivProfilePictureDetail"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:src="@drawable/person"
             android:layout_marginLeft="10dp"
+            android:src="@drawable/person"
             android:tint="@color/white"
             app:civ_border_color="@color/textDarkAccent"
             app:civ_border_width="1dp"
@@ -50,10 +99,10 @@
             android:id="@+id/tvPostAuthorDetail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
             android:background="@color/primaryBackGround"
             android:gravity="center_vertical"
             android:text="Placeholder text"
-            android:layout_marginLeft="5dp"
             android:textColor="@color/primaryText"
             android:textIsSelectable="false"
             android:textSize="15dp"
@@ -72,42 +121,83 @@
         app:layout_constraintTop_toBottomOf="@+id/authorLayoutDetail" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
+        android:id="@+id/postInteractionLayout"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/ivPostDetail"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivPostDetail">
 
         <ImageView
             android:id="@+id/ivLikePostDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
             app:srcCompat="@drawable/favorite"
             app:tint="@color/white"
             tools:layout_editor_absoluteX="10dp"
             tools:layout_editor_absoluteY="386dp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tvPostTitleDetail"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginStart="8dp"
-        android:text="Placeholder title"
-        android:textColor="@color/white"
+    <LinearLayout
+        android:id="@+id/postTitleDescLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="200dp"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/postInteractionLayout"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/tvPostTitleDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="5dp"
+            android:maxLength="100"
+            android:text="Placeholder title"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/postInteractionLayout" />
+
+        <TextView
+            android:id="@+id/tvPostDescriptionDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:scrollbars="vertical"
+            android:text="Placeholder description"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPostTitleDetail" />
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/tvPostDescriptionDetail"
+        android:id="@+id/tvNoComments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="TextView"
-        android:textColor="@color/white"
+        android:text="This post has no comments..."
+        android:textColor="@color/textDarkAccent"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/rvComments"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPostTitleDetail" />
+        app:layout_constraintTop_toBottomOf="@+id/postTitleDescLayout" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvComments"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@+id/writeCommentLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

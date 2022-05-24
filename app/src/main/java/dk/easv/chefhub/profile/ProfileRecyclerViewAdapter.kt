@@ -41,7 +41,7 @@ class ProfileRecyclerViewAdapter(private val onClick: (BePost) -> Unit):
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.profilerow, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.post_cell, parent, false)
         return PostViewHolder(view, onClick)
     }
 

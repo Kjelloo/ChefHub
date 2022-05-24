@@ -2,11 +2,11 @@ package dk.easv.chefhub.data
 
 import android.util.Log
 import dk.easv.chefhub.models.BePost
+import dk.easv.chefhub.models.BeUser
 import dk.easv.chefhub.models.LoggedInUser
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
-import java.io.IOException
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -61,7 +61,7 @@ class HttpHelper {
         return res
     }
 
-    fun getPostById(response: String?): BePost? {
+    fun getPostByIdFromResponse(response: String?): BePost? {
         lateinit var res: BePost
 
         if (response!!.startsWith("error")) {
@@ -75,6 +75,28 @@ class HttpHelper {
 
         try {
             res = BePost(JSONObject(response))
+        } catch (e: JSONException) {
+            e.printStackTrace()
+            return null
+        }
+
+        return res
+    }
+
+    fun getUserFromResponse(response: String?): BeUser? {
+        lateinit var res: BeUser
+
+        if (response!!.startsWith("error")) {
+            Log.d("ERRORS", "Error: $response")
+        }
+
+        if (response == null) {
+            Log.d("ERRORS", "Error: NO RESULT")
+            return null
+        }
+
+        try {
+            res = BeUser(JSONObject(response))
         } catch (e: JSONException) {
             e.printStackTrace()
             return null

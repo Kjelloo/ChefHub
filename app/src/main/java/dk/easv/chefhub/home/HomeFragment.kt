@@ -8,14 +8,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.gson.Gson
-import dk.easv.chefhub.PostDetailActivity
+import dk.easv.chefhub.postdetail.PostDetailActivity
 import dk.easv.chefhub.R
-import dk.easv.chefhub.data.ICallbackPosts
+import dk.easv.chefhub.data.callbacks.ICallbackPosts
 import dk.easv.chefhub.data.repositories.PostRepository
 import dk.easv.chefhub.databinding.FragmentHomeBinding
 import dk.easv.chefhub.models.BePost

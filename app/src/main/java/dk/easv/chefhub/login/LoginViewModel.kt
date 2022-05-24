@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import dk.easv.chefhub.data.repositories.LoginRepository
 
 import dk.easv.chefhub.R
-import dk.easv.chefhub.data.ICallbackLogin
+import dk.easv.chefhub.data.callbacks.ICallbackLogin
 import dk.easv.chefhub.models.LoggedInUser
 
 class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel() {
@@ -20,7 +20,7 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
 
     fun login(username: String, password: String) {
         loginRepository.login(username, password,
-            object:ICallbackLogin {
+            object: ICallbackLogin {
                 override fun onLoginReady(user: LoggedInUser) {
                     _loginResult.value = LoginResult(success = user)
                     Log.d("XYZ", user.token)

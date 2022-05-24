@@ -1,4 +1,4 @@
-package dk.easv.chefhub.data
+package dk.easv.chefhub.data.callbacks
 
 import dk.easv.chefhub.models.LoggedInUser
 
