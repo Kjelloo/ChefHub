@@ -105,9 +105,7 @@ class PostDetailActivity : AppCompatActivity() {
         userRepository.getUser(object : ICallbackUser {
             override fun onUserReady(user: BeUser) {
                 commentingUser = user
-
                 updateWritingCommentUi()
-
             }
 
             override fun onError(error: String) {

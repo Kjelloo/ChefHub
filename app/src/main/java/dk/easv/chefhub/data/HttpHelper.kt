@@ -94,12 +94,39 @@ class HttpHelper {
             Log.d("ERRORS", "Error: NO RESULT")
             return null
         }
-
+        
         try {
             res = BeUser(JSONObject(response))
         } catch (e: JSONException) {
             e.printStackTrace()
             return null
+        }
+
+        return res
+    }
+
+    fun getUsersFromResponse(response: String?): ArrayList<BeUser>? {
+        val res = ArrayList<BeUser>()
+
+        if (response!!.startsWith("error")) {
+            Log.d("ERRORS", "Error: $response")
+            return res
+        }
+
+        if (response == null) {
+            Log.d("ERRORS", "Error: NO RESULT")
+        }
+
+        var array: JSONArray?
+
+        try {
+            array = JSONArray(response)
+
+            for (i in 0 until array.length()) {
+                res.add(BeUser(array.getJSONObject(i)))
+            }
+        } catch (e: JSONException) {
+            e.printStackTrace()
         }
 
         return res

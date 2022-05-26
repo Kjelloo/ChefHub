@@ -59,7 +59,7 @@
             android:maxLength="150"
             android:inputType="textLongMessage"
             android:textColor="@color/white"
-            android:textColorHint="@color/white"
+            android:textColorHint="#636363"
             android:textColorLink="@color/white" />
 
         <Button

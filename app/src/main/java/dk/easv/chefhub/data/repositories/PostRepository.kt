@@ -104,9 +104,7 @@ class PostRepository(token: String) {
                 statusCode: Int,
                 headers: Array<out Header>?,
                 responseBody: ByteArray?
-            ) {
-                Log.d("XYZ", "Post created: ${responseBody.toString()}")
-            }
+            ) {}
 
             override fun onFailure(
                 statusCode: Int,

@@ -47,13 +47,12 @@ class HomeFragment : Fragment() {
 
         setLoggedInUser()
 
-         postFeedAdapter = HomeRecyclerViewAdapter {post -> adapterOnClick(post)}
+        postFeedAdapter = HomeRecyclerViewAdapter {post -> adapterOnClick(post)}
 
         // Fetch post feed from backend
         try {
             postsRepo.getPostFeed(object: ICallbackPosts {
                 override fun onPostsReady(posts: ArrayList<BePost>) {
-                    Log.d("XYZ", posts.size.toString())
                     if (posts.size > 0) {
                         // Load data into adapter
                         postFeedAdapter.submitList(posts)
@@ -70,7 +69,6 @@ class HomeFragment : Fragment() {
                 }
             })
         } catch (e: Exception) {
-            Log.d("ERRORS", e.message!!)
             Toast.makeText(requireContext(), "Cannot fetch posts: " + e.message, Toast.LENGTH_LONG).show()
         }
 
@@ -100,16 +98,6 @@ class HomeFragment : Fragment() {
         user = gson.fromJson(sharedPrefs.getString("user", ""), LoggedInUser::class.java)
 
         postsRepo = PostRepository(user.token)
-    }
-
-    override fun onResume() {
-        super.onResume()
-        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
     }
 
     override fun onDestroyView() {

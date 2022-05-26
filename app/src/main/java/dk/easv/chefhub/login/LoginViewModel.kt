@@ -23,8 +23,6 @@ class LoginViewModel(private val loginRepository: LoginRepository) : ViewModel()
             object: ICallbackLogin {
                 override fun onLoginReady(user: LoggedInUser) {
                     _loginResult.value = LoginResult(success = user)
-                    Log.d("XYZ", user.token)
-
                 }
 
                 override fun onError(error: String) {
