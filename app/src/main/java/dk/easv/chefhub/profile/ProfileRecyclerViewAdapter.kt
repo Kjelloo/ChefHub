@@ -33,7 +33,7 @@ class ProfileRecyclerViewAdapter(private val onClick: (BePost) -> Unit):
             Picasso
                 .get()
                 .load(post.photoUrl)
-                .error(R.drawable.person)
+                .placeholder(R.drawable.person)
                 .fit()
                 .centerCrop()
                 .into(postImageView)
